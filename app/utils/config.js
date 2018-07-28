@@ -1,0 +1,7 @@
+export const BASE_URL="http://chandannathmun.gov.np"
+export const ELECTED_OFFICIALS="/electedofficialsfeed-ne"
+export const KARMACHARI="/staffsfeed-ne"
+export const SUCHANA="/newsfeed-ne"
+export const BOLPATRA="/procurementfeed-ne"
+export const BIDHUTIYA_SUSHASHAN="/egovernancefeed-ne"
+export const NIRNYAHARU="municipaldecisionfeed-ne"
