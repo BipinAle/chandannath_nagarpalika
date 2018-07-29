@@ -22,23 +22,44 @@ export default class Nirnayaharu extends Component<Props> {
         <FlatList
            data={this.state.data}
             renderItem={({item}) =>{return (
-              <View>
+                <View style={{padding:12}}>
               {
                 item["no name"]==""?this.renderBlankView():<HTMLView
                   value={item["no name"]}
-                  onLinkPress={(url) => console.log('clicked link: ', url)}
+                  onLinkPress={(url) =>{ Linking.canOpenURL(url).then(supported => {
+                      if (!supported) {
+                        console.log('Can\'t handle url: ' + url);
+                      } else {
+                        return Linking.openURL(url);
+                      }
+                    }).catch(err => console.error('An error occurred', err));}
+                  }
                 />
               }
               {
                 item.Body==""?this.renderBlankView():<HTMLView
                     value={item.Body}
-                    onLinkPress={(url) => console.log('clicked link: ', url)}
+                    onLinkPress={(url) =>{ Linking.canOpenURL(url).then(supported => {
+                        if (!supported) {
+                          console.log('Can\'t handle url: ' + url);
+                        } else {
+                          return Linking.openURL(url);
+                        }
+                      }).catch(err => console.error('An error occurred', err));}
+                    }
                   />
                 }
                 {
                   item.Documents==""?this.renderBlankView():  <PinchZoomView >
                       <HTMLView value={item.Documents}
-                     onLinkPress={(url) => console.log('clicked link: ', url)} />
+                      onLinkPress={(url) =>{ Linking.canOpenURL(url).then(supported => {
+                          if (!supported) {
+                            console.log('Can\'t handle url: ' + url);
+                          } else {
+                            return Linking.openURL(url);
+                          }
+                        }).catch(err => console.error('An error occurred', err));}
+                      }
                     </PinchZoomView>
                   }
 

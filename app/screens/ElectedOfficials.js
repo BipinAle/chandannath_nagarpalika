@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View,FlatList,Dimensions,Image,ScrollView} from 'react-native';
+import {Platform, StyleSheet, Text, View,FlatList,Image,ScrollView,Dimensions} from 'react-native';
 import { Container, Header, Content, Card, CardItem, Body } from "native-base";
 import  {BASE_URL,ELECTED_OFFICIALS} from '../utils/config'
 import Spinner from 'react-native-loading-spinner-overlay';
 import HTMLView from 'react-native-htmlview';
+const size = Dimensions.get('window').width;
+
 export default class ElectedOfficials extends Component<Props> {
   constructor(props) {
       super(props);
@@ -16,37 +18,73 @@ export default class ElectedOfficials extends Component<Props> {
     }
  render() {
    return (
-     <View style={{flex:1}}>
+     <View style={{flex:1,}}>
         <FlatList
            data={this.state.data}
             renderItem={({item}) =>{return (
-              <View>
+              <View style={{padding:14,alignItems:'center'}}>
 
-              {
-                item["no name"]==""?this.renderBlankView():<HTMLView
-                  value={item["no name"]}
-                  onLinkPress={(url) => console.log('clicked link: ', url)}
-                />
-              }
               {
                 item.Photo==""?this.renderBlankView():<HTMLView
                     value={item.Photo}
-                    onLinkPress={(url) => console.log('clicked link: ', url)}
+                    onLinkPress={(url) =>{ Linking.canOpenURL(url).then(supported => {
+                        if (!supported) {
+                          console.log('Can\'t handle url: ' + url);
+                        } else {
+                          return Linking.openURL(url);
+                        }
+                      }).catch(err => console.error('An error occurred', err));}
+                    }
                   />
                 }
+                <View style={{flexDirection:'row',alignSelf:'flex-start',marginLeft:size/4}}>
+              <Text >नाम : </Text>
+              {
+                item["no name"]==""?this.renderBlankView():<HTMLView
+                  value={item["no name"]}
+                  onLinkPress={(url) =>{ Linking.canOpenURL(url).then(supported => {
+                      if (!supported) {
+                        console.log('Can\'t handle url: ' + url);
+                      } else {
+                        return Linking.openURL(url);
+                      }
+                    }).catch(err => console.error('An error occurred', err));}
+                  }
+                />
+              }
+              </View>
+              <View style={{flexDirection:'row',alignSelf:'flex-start',marginLeft:size/4}}>
+              <Text>पद  : </Text>
+              {
+                item.Designation==""?this.renderBlankView():<HTMLView
+                    value={item.Designation}
+                    onLinkPress={(url) =>{ Linking.canOpenURL(url).then(supported => {
+                        if (!supported) {
+                          console.log('Can\'t handle url: ' + url);
+                        } else {
+                          return Linking.openURL(url);
+                        }
+                      }).catch(err => console.error('An error occurred', err));}
+                    }
+                  />
+                }
+                </View>
+                <View style={{flexDirection:'row',alignSelf:'flex-start',marginLeft:size/4}}>
+                <Text>ईमेल  : </Text>
                 {
-                  item.Designation==""?this.renderBlankView():<HTMLView
-                      value={item.Designation}
-                      onLinkPress={(url) => console.log('clicked link: ', url)}
+                  item.Email==""?this.renderBlankView():<HTMLView
+                      value={item.Email}
+                      onLinkPress={(url) =>{ Linking.canOpenURL(url).then(supported => {
+                          if (!supported) {
+                            console.log('Can\'t handle url: ' + url);
+                          } else {
+                            return Linking.openURL(url);
+                          }
+                        }).catch(err => console.error('An error occurred', err));}
+                      }
                     />
                   }
-
-                  {
-                    item.Email==""?this.renderBlankView():<HTMLView
-                        value={item.Email}
-                        onLinkPress={(url) => console.log('clicked link: ', url)}
-                      />
-                    }
+                </View>
 
 
                </View>

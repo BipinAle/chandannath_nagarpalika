@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View,FlatList,Dimensions,Image,ScrollView} from 'react-native';
+import {Platform, StyleSheet, Text, View,FlatList,Dimensions,Image,ScrollView,Linking} from 'react-native';
 import { Container, Header, Content, Card, CardItem, Body } from "native-base";
 import  {BASE_URL,BIDHUTIYA_SUSHASHAN} from '../utils/config'
 import Spinner from 'react-native-loading-spinner-overlay';
 import HTMLView from 'react-native-htmlview';
 import PinchZoomView from 'react-native-pinch-zoom-view';
+
 
 export default class Bidhutiya extends Component<Props> {
   constructor(props) {
@@ -22,25 +23,47 @@ export default class Bidhutiya extends Component<Props> {
         <FlatList
            data={this.state.data}
             renderItem={({item}) =>{return (
-              <View>
+                <View style={{padding:12}}>
 
               {
                 item["no name"]==""?this.renderBlankView():<HTMLView
                   value={item["no name"]}
-                  onLinkPress={(url) => console.log('clicked link: ', url)}
+                  onLinkPress={(url) =>{ Linking.canOpenURL(url).then(supported => {
+                      if (!supported) {
+                        console.log('Can\'t handle url: ' + url);
+                      } else {
+                        return Linking.openURL(url);
+                      }
+                    }).catch(err => console.error('An error occurred', err));}
+                  }
                 />
               }
               {
                 item.Body==""?this.renderBlankView():<HTMLView
                     value={item.Body}
-                    onLinkPress={(url) => console.log('clicked link: ', url)}
+                    onLinkPress={(url) =>{ Linking.canOpenURL(url).then(supported => {
+                        if (!supported) {
+                          console.log('Can\'t handle url: ' + url);
+                        } else {
+                          return Linking.openURL(url);
+                        }
+                      }).catch(err => console.error('An error occurred', err));}
+                    }
                   />
                 }
                 {
-                  item.Documents==""?this.renderBlankView():  <PinchZoomView >
+                  item.Documents==""?this.renderBlankView():
                       <HTMLView value={item.Documents}
-                     onLinkPress={(url) => console.log('clicked link: ', url)} />
-                    </PinchZoomView>
+                      onLinkPress={(url) =>{ Linking.canOpenURL(url).then(supported => {
+                          if (!supported) {
+                            console.log('Can\'t handle url: ' + url);
+                          } else {
+                            return Linking.openURL(url);
+                          }
+                        }).catch(err => console.error('An error occurred', err));}
+                      }
+                      />
+
                   }
 
 

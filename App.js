@@ -19,35 +19,37 @@ export default class App extends Component<Props> {
 }
 
 const StackNavigator = createStackNavigator({
-    Dashboard: {  screen: Dashboard },
-    ElectedOfficials:{screen:ElectedOfficials},
-    Karmachari:{screen:Karmachari},
-    Suchana:{screen:Suchana},
-    BolPatra:{screen:BolPatra},
-    Bidhutiya:{screen:Bidhutiya},
-    Nirnayaharu:{screen:Nirnayaharu}
+    Dashboard: {  screen: Dashboard,navigationOptions:{  title:'चन्दननाथ नगरपालिक', headerLeft: (
+       <View style={{flex: 1, flexDirection: 'row'}}>
+           <TouchableOpacity   >
+            <View style={{ paddingLeft:12,paddingRight:12}}>
+                <Icon
+                color={'white'}
+                size={24}
+                name={'bars'}
+                />
+            </View>
+          </TouchableOpacity>
+        </View>
+    ),}},
+    ElectedOfficials:{screen:ElectedOfficials,navigationOptions:{  title:'जनप्रतिनिधि'}},
+    Karmachari:{screen:Karmachari,navigationOptions:{  title:'कर्मचारी'}},
+    Suchana:{screen:Suchana,navigationOptions:{  title:'सूचना/समाचार ब्लक'}},
+    BolPatra:{screen:BolPatra,navigationOptions:{  title:'सार्वजनिक खरिद/बोलपत्र सूचना'}},
+    Bidhutiya:{screen:Bidhutiya,navigationOptions:{  title:'विधुतीय शुसासन सेवा'}},
+    Nirnayaharu:{screen:Nirnayaharu,navigationOptions:{  title:'निर्णयहरु'}}
    },{
      initialRouteName: 'Dashboard',
      navigationOptions: {
        headerStyle: {
-           backgroundColor: '#ff0000',
-         },
-         headerLeft: (
-           <View style={{flex: 1, flexDirection: 'row'}}>
+       backgroundColor: '#f4511e',
+       },
+       headerTintColor: '#fff',
+       headerTitleStyle: {
+         fontWeight: 'bold',
+       },
 
-               <TouchableOpacity   >
-                <View style={{ paddingLeft:12,paddingRight:12}}>
-                    <Icon
-                    color={'white'}
-                    size={24}
-                    name={'bars'}
-                    />
-                </View>
-              </TouchableOpacity>
-             <Text style={{color:'white',fontSize:20,}}>चन्दननाथ नगरपालिक</Text>
-           </View>
-        ),
-          
+
      }
    },
 
