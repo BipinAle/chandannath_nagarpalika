@@ -50,8 +50,9 @@ export default class Nirnayaharu extends Component<Props> {
                   />
                 }
                 {
-                  item.Documents==""?this.renderBlankView():  <PinchZoomView >
-                      <HTMLView value={item.Documents}
+
+                  item.Documents==""?this.renderBlankView():<HTMLView
+                      value={item.Documents}
                       onLinkPress={(url) =>{ Linking.canOpenURL(url).then(supported => {
                           if (!supported) {
                             console.log('Can\'t handle url: ' + url);
@@ -60,7 +61,8 @@ export default class Nirnayaharu extends Component<Props> {
                           }
                         }).catch(err => console.error('An error occurred', err));}
                       }
-                    </PinchZoomView>
+                    />
+
                   }
 
               </View>
