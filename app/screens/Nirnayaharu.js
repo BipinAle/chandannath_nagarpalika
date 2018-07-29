@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View,FlatList,Dimensions,Image,ScrollView} from 'react-native';
+import {Platform, StyleSheet, Text, View,FlatList,Dimensions,Image,ScrollView,Alert} from 'react-native';
 import { Container, Header, Content, Card, CardItem, Body } from "native-base";
 import  {BASE_URL,NIRNYAHARU} from '../utils/config'
 import Spinner from 'react-native-loading-spinner-overlay';
@@ -86,13 +86,16 @@ export default class Nirnayaharu extends Component<Props> {
           })
         .then((response) => response.json())
         .then((responseJson) => {
+          if (responseJson==null) {
+            alert.alert("No data available.")
+          }
           this.setState({isLoading:false})
           this.setState({data:responseJson})
 
       })
       .catch((error) => {
         this.setState({isLoading:false})
-          console.error(error);
+          Alert.alert("Something went wrong. ")
        })
      }
  }

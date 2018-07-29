@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View,FlatList,Dimensions,Image,ScrollView,Linking} from 'react-native';
-import { Container, Header, Content, Card, CardItem, Body } from "native-base";
+import { Container, Header, Content, Card, CardItem, Body,Thumbnail } from "native-base";
 import  {BASE_URL,BOLPATRA} from '../utils/config'
 import Spinner from 'react-native-loading-spinner-overlay';
 import HTMLView from 'react-native-htmlview';
@@ -21,7 +21,8 @@ export default class Bolpatra extends Component<Props> {
         <FlatList
            data={this.state.data}
             renderItem={({item}) =>{return (
-              <View style={{padding:12}}>
+                <Card style={{padding:12,alignItems:'center',margin:12}}>
+
               {
                 item["no name"]==""?this.renderBlankView():<HTMLView
                   value={item["no name"]}
@@ -49,28 +50,41 @@ export default class Bolpatra extends Component<Props> {
                   />
                 }
                 {
-                  item.Documents==""?this.renderBlankView(): <PinchZoomView >
-                      <HTMLView value={item.Documents}
-                      onLinkPress={(url) =>{ Linking.canOpenURL(url).then(supported => {
-                          if (!supported) {
-                            console.log('Can\'t handle url: ' + url);
-                          } else {
-                            return Linking.openURL(url);
-                          }
-                        }).catch(err => console.error('An error occurred', err));}
-                      }
-                      />
-                    </PinchZoomView>
+                  item.Documents==""?this.renderBlankPdf():
+                  <View style={{flexDirection:'row'}}>
+                        <Thumbnail source={require('../../app/icons/pdf.png')} />
+                       <HTMLView
+                       style={{alignSelf:'center'}}
+                        value={item.Documents}
+                        onLinkPress={(url) =>{ Linking.canOpenURL(url).then(supported => {
+                           if (!supported) {
+                             console.log('Can\'t handle url: ' + url);
+                           } else {
+                             return Linking.openURL(url);
+                           }
+                         }).catch(err => console.error('An error occurred', err));}
+                       }
+                       />
+                    </View>
                   }
-
-
-               </View>
+                </Card>
             )} }
            keyExtractor={(item, index) => index.toString()}
              />
            <Spinner visible={this.state.isLoading}  />
    </View>
    )
+ }
+
+ renderBlankPdf=()=>{
+     return(   <View style={{flexDirection:'row'}}>
+
+           <Thumbnail source={require('../../app/icons/disabled_pdf.png')} />
+            <Text style={{color:'blue',alignSelf:'center'}}>No pdf available.</Text>
+
+         </View>
+       )
+
  }
  renderBlankView=()=>{
    return(<Text />)

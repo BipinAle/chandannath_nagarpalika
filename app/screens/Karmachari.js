@@ -21,7 +21,7 @@ export default class Karmachari extends Component<Props> {
         <FlatList
            data={this.state.data}
             renderItem={({item}) =>{return (
-              <View style={{padding:14,alignItems:'center'}}>
+              <Card style={{padding:14,alignItems:'center'}}>
 
               {
                 item.Photo==""?this.renderBlankPhoto():<HTMLView
@@ -84,7 +84,7 @@ export default class Karmachari extends Component<Props> {
                     />
                   }
                 </View>
-               </View>
+               </Card>
             )} }
            keyExtractor={(item, index) => index.toString()}
              />

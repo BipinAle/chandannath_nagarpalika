@@ -18,14 +18,14 @@ export default class ElectedOfficials extends Component<Props> {
     }
  render() {
    return (
-     <View style={{flex:1,}}>
+     <View style={{flex:1}}>
         <FlatList
            data={this.state.data}
             renderItem={({item}) =>{return (
-              <View style={{padding:14,alignItems:'center'}}>
+              <Card style={{padding:14,alignItems:'center'}}>
 
               {
-                item.Photo==""?this.renderBlankView():<HTMLView
+                item.Photo==""?this.renderBlankPhoto():<HTMLView
                     value={item.Photo}
                     onLinkPress={(url) =>{ Linking.canOpenURL(url).then(supported => {
                         if (!supported) {
@@ -85,22 +85,24 @@ export default class ElectedOfficials extends Component<Props> {
                     />
                   }
                 </View>
-
-
-               </View>
+               </Card>
             )} }
            keyExtractor={(item, index) => index.toString()}
              />
            <Spinner visible={this.state.isLoading}  />
    </View>
    )
- }
- renderBlankView=()=>{
-   return(<Text />)
- }
- componentDidMount() {
+   }
+   componentDidMount() {
     this.getElectedOfficials()
    }
+   renderBlankPhoto=()=>{
+     return(<Image style ={{height:200,width:200}}source={require('../../app/icons/user.png')}/>)
+   }
+   renderBlankView=()=>{
+     return(<Text />)
+   }
+
  getElectedOfficials = ()=>{
    this.setState({isLoading:true})
     fetch(BASE_URL+ELECTED_OFFICIALS, {
