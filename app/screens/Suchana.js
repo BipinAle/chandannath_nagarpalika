@@ -23,7 +23,7 @@ export default class Suchana extends Component<Props> {
         <FlatList
            data={this.state.data}
             renderItem={({item}) =>{return (
-                <View style={{padding:12}}>
+                <Card style={{padding:12}}>
 
               {
                 item["no name"]==""?this.renderBlankView():<HTMLView
@@ -45,12 +45,12 @@ export default class Suchana extends Component<Props> {
                   />
                 }
                 {
-                  item.Image==""?this.renderBlankView():  <PinchZoomView >
+                  item.Image==""?this.renderBlankView():
                       <HTMLView value={item.Image}
                      onLinkPress={(url) => console.log('clicked link: ', url)} />
-                    </PinchZoomView>
+
                   }
-               </View>
+               </Card>
             )} }
            keyExtractor={(item, index) => index.toString()}
              />
