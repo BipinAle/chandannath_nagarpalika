@@ -28,6 +28,8 @@ const size = Dimensions.get('window').width/2;
         <CardWithImageAndTitle props={this.props} navigateTo={'Bidhutiya'} title={' विधुतीय शुसासन\सेवा'}  image={require('../../app/icons/budhutiya.png')}/>
         <CardWithImageAndTitle props={this.props} navigateTo={'Nirnayaharu'} title={'निर्णयहरु'}  image={require('../../app/icons/nirnaya.png')}/>
         </View>
+         <CardWithImageAndTitle props={this.props} navigateTo={'MapView'} title={'नक्सा '}  image={require('../../app/icons/map.png')}/>
+
         <Card>
 
              <CardItem bordered style={{flexDirection:'column',alignItems:'flex-start'}} >

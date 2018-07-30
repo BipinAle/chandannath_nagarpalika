@@ -9,6 +9,7 @@ import Suchana from './app/screens/Suchana'
 import BolPatra from './app/screens/BolPatra'
 import Bidhutiya from './app/screens/Bidhutiya'
 import Nirnayaharu from './app/screens/Nirnayaharu'
+import MapView from './app/screens/MapView'
 
 export default class App extends Component<Props> {
   render() {
@@ -37,7 +38,9 @@ const StackNavigator = createStackNavigator({
     Suchana:{screen:Suchana,navigationOptions:{  title:'सूचना/समाचार ब्लक'}},
     BolPatra:{screen:BolPatra,navigationOptions:{  title:'सार्वजनिक खरिद/बोलपत्र सूचना'}},
     Bidhutiya:{screen:Bidhutiya,navigationOptions:{  title:'विधुतीय शुसासन सेवा'}},
-    Nirnayaharu:{screen:Nirnayaharu,navigationOptions:{  title:'निर्णयहरु'}}
+    Nirnayaharu:{screen:Nirnayaharu,navigationOptions:{  title:'निर्णयहरु'}},
+    MapView:{screen:MapView,navigationOptions:{  title:'नक्सा'}}
+
    },{
      initialRouteName: 'Dashboard',
      navigationOptions: {

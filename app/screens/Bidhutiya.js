@@ -82,7 +82,7 @@ export default class Bidhutiya extends Component<Props> {
  renderBlankPdf=()=>{
      return(   <View style={{flexDirection:'row'}}>
 
-           <Thumbnail style={{marginRight:12,height:48,width:48}}source={require('../../app/icons/disabled_pdf.png')} />
+           <Thumbnail style={{marginRight:12,height:32,width:32}}source={require('../../app/icons/disabled_pdf.png')} />
             <Text style={{alignSelf:'center'}}>No pdf available.</Text>
 
          </View>
