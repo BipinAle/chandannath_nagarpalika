@@ -5,6 +5,7 @@ export default class line extends Component<Props> {
    return (
      <View
          style={{
+           flex:1,
            borderBottomColor: '#cccccc',
            borderBottomWidth: 1,
          }}

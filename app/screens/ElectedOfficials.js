@@ -22,10 +22,12 @@ export default class ElectedOfficials extends Component<Props> {
         <FlatList
            data={this.state.data}
             renderItem={({item}) =>{return (
-              <View style={{padding:14,alignItems:'center'}}>
+
+              <View style={{padding:14,alignItems:'center',flexDirection:'row'}}>
 
               {
-                item.Photo==""?this.renderBlankView():<HTMLView
+                item.Photo==""?this.renderBlankPhoto():<HTMLView
+
                     value={item.Photo}
                     onLinkPress={(url) =>{ Linking.canOpenURL(url).then(supported => {
                         if (!supported) {
@@ -37,7 +39,8 @@ export default class ElectedOfficials extends Component<Props> {
                     }
                   />
                 }
-                <View style={{flexDirection:'row',alignSelf:'flex-start',marginLeft:size/4}}>
+                <View >
+                <View style={{flexDirection:'row',alignSelf:'flex-start',marginLeft:6}}>
               <Text >नाम : </Text>
               {
                 item["no name"]==""?this.renderBlankView():<HTMLView
@@ -53,7 +56,7 @@ export default class ElectedOfficials extends Component<Props> {
                 />
               }
               </View>
-              <View style={{flexDirection:'row',alignSelf:'flex-start',marginLeft:size/4}}>
+              <View style={{flexDirection:'row',alignSelf:'flex-start',marginLeft:6}}>
               <Text>पद  : </Text>
               {
                 item.Designation==""?this.renderBlankView():<HTMLView
@@ -69,7 +72,7 @@ export default class ElectedOfficials extends Component<Props> {
                   />
                 }
                 </View>
-                <View style={{flexDirection:'row',alignSelf:'flex-start',marginLeft:size/4}}>
+                <View style={{flexDirection:'row',alignSelf:'flex-start',marginLeft:6}}>
                 <Text>ईमेल  : </Text>
                 {
                   item.Email==""?this.renderBlankView():<HTMLView
@@ -84,19 +87,24 @@ export default class ElectedOfficials extends Component<Props> {
                       }
                     />
                   }
+                  </View>
                 </View>
 
+                </View>
 
-               </View>
             )} }
            keyExtractor={(item, index) => index.toString()}
              />
            <Spinner visible={this.state.isLoading}  />
    </View>
+
    )
  }
  renderBlankView=()=>{
    return(<Text />)
+ }
+ renderBlankPhoto=()=>{
+   return(<Image style ={{height:100,width:100}}source={require('../../app/icons/user.png')}/>)
  }
  componentDidMount() {
     this.getElectedOfficials()

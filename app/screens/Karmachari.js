@@ -17,62 +17,17 @@ export default class Karmachari extends Component<Props> {
     }
  render() {
    return (
-     <View style={{flex:1}}>
-        <FlatList
-           data={this.state.data}
-            renderItem={({item}) =>{return (
-              <View style={{padding:14,alignItems:'center'}}>
 
-              {
-                item.Photo==""?this.renderBlankPhoto():<HTMLView
-                    value={item.Photo}
-                    onLinkPress={(url) =>{ Linking.canOpenURL(url).then(supported => {
-                        if (!supported) {
-                          console.log('Can\'t handle url: ' + url);
-                        } else {
-                          return Linking.openURL(url);
-                        }
-                      }).catch(err => console.error('An error occurred', err));}
-                    }
-                  />
-                }
-                <View style={{flexDirection:'row',alignSelf:'flex-start',marginLeft:size/4}}>
-              <Text >नाम : </Text>
-              {
-                item["no name"]==""?this.renderBlankView():<HTMLView
-                  value={item["no name"]}
-                  onLinkPress={(url) =>{ Linking.canOpenURL(url).then(supported => {
-                      if (!supported) {
-                        console.log('Can\'t handle url: ' + url);
-                      } else {
-                        return Linking.openURL(url);
-                      }
-                    }).catch(err => console.error('An error occurred', err));}
-                  }
-                />
-              }
-              </View>
-              <View style={{flexDirection:'row',alignSelf:'flex-start',marginLeft:size/4}}>
-              <Text>पद  : </Text>
-              {
-                item.Designation==""?this.renderBlankView():<HTMLView
-                    value={item.Designation}
-                    onLinkPress={(url) =>{ Linking.canOpenURL(url).then(supported => {
-                        if (!supported) {
-                          console.log('Can\'t handle url: ' + url);
-                        } else {
-                          return Linking.openURL(url);
-                        }
-                      }).catch(err => console.error('An error occurred', err));}
-                    }
-                  />
-                }
-                </View>
-                <View style={{flexDirection:'row',alignSelf:'flex-start',marginLeft:size/4}}>
-                <Text>ईमेल  : </Text>
+       <View style={{flex:1,}}>
+          <FlatList
+             data={this.state.data}
+              renderItem={({item}) =>{return (
+
+                <View style={{padding:14,alignItems:'center',flexDirection:'row'}}>
+
                 {
-                  item.Email==""?this.renderBlankView():<HTMLView
-                      value={item.Email}
+                  item.Photo==""?this.renderBlankPhoto():<HTMLView
+                       value={item.Photo}
                       onLinkPress={(url) =>{ Linking.canOpenURL(url).then(supported => {
                           if (!supported) {
                             console.log('Can\'t handle url: ' + url);
@@ -83,20 +38,71 @@ export default class Karmachari extends Component<Props> {
                       }
                     />
                   }
+                  <View >
+                  <View style={{flexDirection:'row',alignSelf:'flex-start',marginLeft:6}}>
+                <Text >नाम : </Text>
+                {
+                  item["no name"]==""?this.renderBlankView():<HTMLView
+                    value={item["no name"]}
+                    onLinkPress={(url) =>{ Linking.canOpenURL(url).then(supported => {
+                        if (!supported) {
+                          console.log('Can\'t handle url: ' + url);
+                        } else {
+                          return Linking.openURL(url);
+                        }
+                      }).catch(err => console.error('An error occurred', err));}
+                    }
+                  />
+                }
                 </View>
-               </View>
-            )} }
-           keyExtractor={(item, index) => index.toString()}
-             />
-           <Spinner visible={this.state.isLoading}  />
-   </View>
+                <View style={{flexDirection:'row',alignSelf:'flex-start',marginLeft:6}}>
+                <Text>पद  : </Text>
+                {
+                  item.Designation==""?this.renderBlankView():<HTMLView
+                      value={item.Designation}
+                      onLinkPress={(url) =>{ Linking.canOpenURL(url).then(supported => {
+                          if (!supported) {
+                            console.log('Can\'t handle url: ' + url);
+                          } else {
+                            return Linking.openURL(url);
+                          }
+                        }).catch(err => console.error('An error occurred', err));}
+                      }
+                    />
+                  }
+                  </View>
+                  <View style={{flexDirection:'row',alignSelf:'flex-start',marginLeft:6}}>
+                  <Text>ईमेल  : </Text>
+                  {
+                    item.Email==""?this.renderBlankView():<HTMLView
+                        value={item.Email}
+                        onLinkPress={(url) =>{ Linking.canOpenURL(url).then(supported => {
+                            if (!supported) {
+                              console.log('Can\'t handle url: ' + url);
+                            } else {
+                              return Linking.openURL(url);
+                            }
+                          }).catch(err => console.error('An error occurred', err));}
+                        }
+                      />
+                    }
+                    </View>
+                  </View>
+
+                  </View>
+
+              )} }
+             keyExtractor={(item, index) => index.toString()}
+               />
+             <Spinner visible={this.state.isLoading}  />
+     </View>
    )
  }
  componentDidMount() {
     this.getElectedOfficials()
    }
    renderBlankPhoto=()=>{
-     return(<Image style ={{height:200,width:200}}source={require('../../app/icons/user.png')}/>)
+     return(<Image style ={{height:100,width:100}}source={require('../../app/icons/user.png')}/>)
    }
    renderBlankView=()=>{
      return(<Text />)
