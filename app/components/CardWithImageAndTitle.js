@@ -10,7 +10,7 @@ export default class CardWithImageAndTitle extends Component<Props> {
        }
  render() {
    return (
-     <Card style={{flex:1,height:size-24,width:size-24,}}>
+     <Card style={{flex:1,height:size-24,width:size-24}}>
      <TouchableOpacity onPress={() =>this.props.props.navigation.navigate(this.props.navigateTo)}>
        <CardItem   >
          <Body  >
