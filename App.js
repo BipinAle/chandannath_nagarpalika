@@ -24,11 +24,7 @@ const StackNavigator = createStackNavigator({
        <View style={{flex: 1, flexDirection: 'row'}}>
            <TouchableOpacity   >
             <View style={{ paddingLeft:12,paddingRight:12}}>
-                <Icon
-                color={'white'}
-                size={24}
-                name={'bars'}
-                />
+                
             </View>
           </TouchableOpacity>
         </View>

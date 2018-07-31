@@ -22,12 +22,10 @@ export default class ElectedOfficials extends Component<Props> {
         <FlatList
            data={this.state.data}
             renderItem={({item}) =>{return (
-
-              <View style={{padding:14,alignItems:'center',flexDirection:'row'}}>
+              <Card style={{padding:14,alignItems:'center'}}>
 
               {
                 item.Photo==""?this.renderBlankPhoto():<HTMLView
-
                     value={item.Photo}
                     onLinkPress={(url) =>{ Linking.canOpenURL(url).then(supported => {
                         if (!supported) {
@@ -39,8 +37,7 @@ export default class ElectedOfficials extends Component<Props> {
                     }
                   />
                 }
-                <View >
-                <View style={{flexDirection:'row',alignSelf:'flex-start',marginLeft:6}}>
+                <View style={{flexDirection:'row',alignSelf:'flex-start',marginLeft:size/4,marginTop:12}}>
               <Text >नाम : </Text>
               {
                 item["no name"]==""?this.renderBlankView():<HTMLView
@@ -56,7 +53,7 @@ export default class ElectedOfficials extends Component<Props> {
                 />
               }
               </View>
-              <View style={{flexDirection:'row',alignSelf:'flex-start',marginLeft:6}}>
+              <View style={{flexDirection:'row',alignSelf:'flex-start',marginLeft:size/4}}>
               <Text>पद  : </Text>
               {
                 item.Designation==""?this.renderBlankView():<HTMLView
@@ -72,7 +69,7 @@ export default class ElectedOfficials extends Component<Props> {
                   />
                 }
                 </View>
-                <View style={{flexDirection:'row',alignSelf:'flex-start',marginLeft:6}}>
+                <View style={{flexDirection:'row',alignSelf:'flex-start',marginLeft:size/4}}>
                 <Text>ईमेल  : </Text>
                 {
                   item.Email==""?this.renderBlankView():<HTMLView
@@ -87,26 +84,16 @@ export default class ElectedOfficials extends Component<Props> {
                       }
                     />
                   }
-                  </View>
                 </View>
-
-                </View>
-
+               </Card>
             )} }
            keyExtractor={(item, index) => index.toString()}
              />
            <Spinner visible={this.state.isLoading}  />
    </View>
-
    )
- }
- renderBlankView=()=>{
-   return(<Text />)
- }
- renderBlankPhoto=()=>{
-   return(<Image style ={{height:100,width:100}}source={require('../../app/icons/user.png')}/>)
- }
- componentDidMount() {
+   }
+   componentDidMount() {
     this.getElectedOfficials()
    }
    renderBlankPhoto=()=>{

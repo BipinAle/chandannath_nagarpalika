@@ -12,7 +12,7 @@ const size = Dimensions.get('window').width/2;
       <ScrollView style={{padding:12,backgroundColor:'white',}}>
         <View style={{flexDirection:'row',alignItems:'center',}}>
           <Image style={{ height:40,width:40,margin:12}} source={require('../../app/icons/govt_nepal.png')}  />
-          <Text>चन्दननाथ नगरपालिका </Text>
+          <Text style={{fontSize:24}}>चन्दननाथ नगरपालिका </Text>
         </View>
         <Line/>
         <Text style={{color:'red',fontSize:20,marginTop:12,marginBottom:12}}>तपाईं कुन जानकारी चाहनुहुन्छ ? </Text>
@@ -30,7 +30,7 @@ const size = Dimensions.get('window').width/2;
         </View>
          <CardWithImageAndTitle props={this.props} navigateTo={'MapView'} title={'नक्सा '}  image={require('../../app/icons/map.png')}/>
 
-        <Card>
+        <Card style={{marginBottom:32}}>
 
              <CardItem bordered style={{flexDirection:'column',alignItems:'flex-start'}} >
               <Text style={{fontSize:22,fontWeight:'bold',textDecorationLine:'underline'}}>सम्पर्क विवरण </Text>
