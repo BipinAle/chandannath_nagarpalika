@@ -52,7 +52,7 @@ export default class Bolpatra extends Component<Props> {
                 {
                   item.Documents==""?this.renderBlankPdf():
                   <View style={{flexDirection:'row'}}>
-                        <Thumbnail source={require('../../app/icons/pdf.png')} />
+                        <Thumbnail style={{height:32,width:32}}  source={require('../../app/icons/pdf.png')} />
                        <HTMLView
                        style={{alignSelf:'center'}}
                         value={item.Documents}
@@ -79,8 +79,8 @@ export default class Bolpatra extends Component<Props> {
  renderBlankPdf=()=>{
      return(   <View style={{flexDirection:'row'}}>
 
-           <Thumbnail source={require('../../app/icons/disabled_pdf.png')} />
-            <Text style={{color:'blue',alignSelf:'center'}}>No pdf available.</Text>
+           <Thumbnail style={{height:32,width:32}} source={require('../../app/icons/disabled_pdf.png')} />
+            <Text style={{alignSelf:'center'}}>No pdf available.</Text>
 
          </View>
        )

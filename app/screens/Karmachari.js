@@ -17,14 +17,6 @@ export default class Karmachari extends Component<Props> {
     }
  render() {
    return (
-<<<<<<< HEAD
-=======
-     <View style={{flex:1}}>
-        <FlatList
-           data={this.state.data}
-            renderItem={({item}) =>{return (
-              <Card style={{padding:14,alignItems:'center'}}>
->>>>>>> e17e9d043d38ffa538cd670e55ceb1b7f8dccb52
 
        <View style={{flex:1,}}>
           <FlatList
@@ -78,7 +70,6 @@ export default class Karmachari extends Component<Props> {
                       }
                     />
                   }
-<<<<<<< HEAD
                   </View>
                   <View style={{flexDirection:'row',alignSelf:'flex-start',marginLeft:6}}>
                   <Text>ईमेल  : </Text>
@@ -105,15 +96,6 @@ export default class Karmachari extends Component<Props> {
                />
              <Spinner visible={this.state.isLoading}  />
      </View>
-=======
-                </View>
-               </Card>
-            )} }
-           keyExtractor={(item, index) => index.toString()}
-             />
-           <Spinner visible={this.state.isLoading}  />
-   </View>
->>>>>>> e17e9d043d38ffa538cd670e55ceb1b7f8dccb52
    )
  }
  componentDidMount() {

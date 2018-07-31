@@ -7,8 +7,8 @@ export default class IconTextView extends Component<Props> {
  render() {
    return (
      <View style={{flexDirection:'row',marginBottom:8}}>
-     <Image  style={{height:30,width:30,alignSelf:'center',marginRight:8 }} source={this.props.image} />
-     <Text style={{alignSelf:'center',fontSize:17,fontWeight:'bold'}}>{this.props.text}</Text>
+     <Image  style={{height:24,width:24,marginRight:8 }} source={this.props.image} />
+     <Text style={{fontSize:17,fontWeight:'bold'}}>{this.props.text}</Text>
      </View>
    )
  }
