@@ -3,10 +3,12 @@ import {Platform, StyleSheet, Text, View,FlatList,Dimensions,Image,ScrollView,Al
 import { Container, Header, Content, Card, CardItem, Body } from "native-base";
 import Line from '../components/line'
 import CardWithImageAndTitle from '../components/CardWithImageAndTitle'
+import ContactUs from '../components/ContactUs'
 import IconTextView from '../components/IconTextView'
 const size = Dimensions.get('window').width/2;
 
  export default class Dashboard extends Component<Props> {
+
   render() {
     return (
       <ScrollView style={{padding:12,backgroundColor:'white',}}>
@@ -30,23 +32,7 @@ const size = Dimensions.get('window').width/2;
         </View>
          <CardWithImageAndTitle props={this.props} navigateTo={'MapView'} title={'नक्सा '}  image={require('../../app/icons/map.png')}/>
 
-        <Card style={{marginBottom:32}}>
-
-             <CardItem bordered style={{flexDirection:'column',alignItems:'flex-start'}} >
-              <Text style={{fontSize:22,fontWeight:'bold',textDecorationLine:'underline'}}>सम्पर्क विवरण </Text>
-              <Line/>
-              <Text style={{fontSize:18,marginBottom:8}}>
-
-               </Text>
-              <IconTextView text={'+९७७ ८७ ५२००११'}  image={require('../../app/icons/phone.png')}/>
-              <IconTextView text={'+९७७ ८७ ५२००११'}  image={require('../../app/icons/fax.png')}/>
-              <IconTextView text={'cmjumla@gmail.com'}  image={require('../../app/icons/email.png')}/>
-              <IconTextView text={'http://chandannathmun.gov.np/ne'}  image={require('../../app/icons/site.png')}/>
-              <IconTextView text={'  चन्दननाथ नगरपालिक\n  नगर कार्यपालिकाको कार्यालय \n  जुम्ला,कर्णाली प्रदेश \n नेपाल'}  image={require('../../app/icons/location.png')}/>
-              <IconTextView text={'आइतबार - बिहिबार्(बिहान १०:०० बजे देखी सांझ ५:०० बजे), शुक्रबार (बिहान १०:०० बजे देखी सांझ ३:०० बजे) '}  image={require('../../app/icons/time.png')}/>
-             </CardItem>
-
-        </Card>
+        <ContactUs/>
       </ScrollView>
     );
   }

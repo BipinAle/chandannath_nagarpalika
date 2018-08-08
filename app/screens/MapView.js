@@ -5,7 +5,7 @@ import MapView,{ Marker } from 'react-native-maps';
 const styles = StyleSheet.create({
  container: {
    ...StyleSheet.absoluteFillObject,
-   height: 400,
+   flex:1,
    width: 400,
    justifyContent: 'flex-end',
    alignItems: 'center',

@@ -10,6 +10,7 @@
     "native-base": "^2.7.2",
     "react": "16.4.1",
     "react-native": "0.56.0",
+    "react-native-communications": "^2.2.1",
     "react-native-deep-link": "^0.1.5",
     "react-native-htmlview": "^0.12.1",
     "react-native-loading-spinner-overlay": "^0.5.2",
